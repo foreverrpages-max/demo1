@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Demo · Birthday Page for My Best Friend</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:     #fff9e6;
+    --bg2:    #fff3c4;
+    --accent: #f5c800;
+    --dark:   #1a1200;
+    --mid:    #5a4a00;
+    --serif:  'Playfair Display', serif;
+    --sans:   'Lato', sans-serif;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; height: auto; display: block; }
+
+  /* ── DEMO RIBBON ── */
+  .demo-ribbon {
+    position: fixed;
+    top: 18px; left: -38px;
+    transform: rotate(-45deg);
+    background: var(--dark);
+    color: var(--bg);
+    padding: 5px 52px;
+    font-family: var(--sans);
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    z-index: 999;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 64px;
+    border-bottom: 1px solid rgba(26,18,0,0.08);
+    background: var(--bg);
+  }
+  .nav-logo {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+  .nav-cta {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--dark);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 100px;
+    cursor: pointer;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  .hero-tag {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 10vw, 6.5rem);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 5vw, 3rem);
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 2rem;
+  }
+  .hero-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.8;
+    max-width: 480px;
+    font-family: var(--serif);
+    font-style: italic;
+  }
+  .hero-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    margin: 2.5rem auto;
+    border-radius: 2px;
+  }
+
+  /* ── PHOTO PLACEHOLDER ── */
+  .photo-section {
+    background: var(--bg2);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .photo-placeholder {
+    width: 220px;
+    height: 280px;
+    background: rgba(245,200,0,0.18);
+    border: 2px dashed var(--accent);
+    border-radius: 16px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--mid);
+  }
+  .photo-placeholder span { font-size: 2rem; }
+  .photo-placeholder p { font-size: 0.75rem; font-weight: 300; letter-spacing: 0.1em; }
+  .photo-caption {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--mid);
+    margin-top: 0.75rem;
+  }
+
+  /* ── LETTER ── */
+  .letter-section {
+    padding: 5rem 2rem;
+    background: var(--bg);
+  }
+  .letter-label {
+    text-align: center;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .letter-heading {
+    text-align: center;
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    color: var(--dark);
+  }
+  .letter-heading em { font-style: italic; font-weight: 400; color: var(--accent); }
+  .letter-paper {
+    max-width: 640px;
+    margin: 0 auto;
+    background: #fffde8;
+    border-radius: 6px;
+    padding: 48px 44px;
+    box-shadow: 0 2px 20px rgba(26,18,0,0.08);
+  }
+  .l-dear {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 1.4rem;
+  }
+  .l-body {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--dark);
+  }
+  .l-body p { margin-bottom: 18px; }
+  .l-body em { font-style: italic; color: var(--accent); }
+  .l-sign {
+    display: block;
+    margin-top: 2rem;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--accent);
+    text-align: right;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: var(--dark);
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+  .closing-emoji { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; }
+  .closing-big {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 7vw, 4.5rem);
+    font-weight: 700;
+    color: #fff9e6;
+    line-height: 1.1;
+  }
+  .closing-big.name { color: var(--accent); font-style: italic; }
+  .closing-note {
+    margin-top: 1.5rem;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(255,249,230,0.6);
+  }
+  .closing-from {
+    margin-top: 2rem;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(245,200,0,0.5);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    nav { padding: 0 1.2rem; }
+    .letter-paper { padding: 32px 24px; }
+    .hero { padding: 3rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-ribbon">DEMO</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">BestieDay ✦</div>
+  <button class="nav-cta">Get Yours — ₹199</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-tag">✦ A Birthday Page for Your Best Friend</p>
+  <div class="hero-name">Bestie's Name</div>
+  <div class="hero-title">Happy Birthday 🎂</div>
+  <p class="hero-sub">A simple, heartfelt page made just for the person who deserves to feel special today.</p>
+  <div class="hero-divider"></div>
+  <p class="hero-sub" style="font-size:0.85rem;">Add your photo · Write your message · Share the link</p>
+</section>
+
+<!-- PHOTO -->
+<section class="photo-section">
+  <div class="photo-placeholder">
+    <span>📷</span>
+    <p>Your Photo Here</p>
+  </div>
+  <p class="photo-caption">Add your favourite picture together ✨</p>
+</section>
+
+<!-- LETTER -->
+<section class="letter-section">
+  <p class="letter-label">✦ from one bestie to another</p>
+  <h2 class="letter-heading">A Letter, <em>because you deserve one</em></h2>
+  <div class="letter-paper">
+    <span class="l-dear">Hey you,</span>
+    <div class="l-body">
+      <p>I'm not the best at saying nice things out loud, so I made you this instead. Feels about right.</p>
+      <p>You've been there through everything — the good days, the weird ones, and all the ones in between. That kind of friendship doesn't come around often.</p>
+      <p>Happy Birthday. <em>You're stuck with me.</em></p>
+    </div>
+    <span class="l-sign">Your favourite person, obviously ✨</span>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <span class="closing-emoji">🌻</span>
+  <div class="closing-big">Happy Birthday,</div>
+  <div class="closing-big name">Bestie.</div>
+  <p class="closing-note">Wishing you the most wonderful year yet.</p>
+  <p class="closing-from">— BestieDay · Basic Template · ₹199</p>
+</section>
+
+</body>
+</html>
